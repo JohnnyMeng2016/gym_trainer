@@ -14,7 +14,10 @@ void main() {
     List<dynamic> json = jsonDecode(jsonString);
     Global.actionInfoList = [];
     for (var j in json) {
-      Global.actionInfoList?.add(ActionInfo.fromJson(j));
+      ActionInfo actionInfo = ActionInfo.fromJson(j);
+      if (actionInfo.iconName != null) {
+        Global.actionInfoList?.add(ActionInfo.fromJson(j));
+      }
     }
   });
   runApp(const MyApp());
